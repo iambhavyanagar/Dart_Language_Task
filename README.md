@@ -31,23 +31,6 @@ Welcome to the Dart Programming Language Repository! 🌟 This repository is des
 19. **Advanced Dart Features 🚀**
 20. **Web Development with Dart 🌐**
 
-## 🚀 Practical Tasks:
-
-### 🟢 Basic Tasks:
-- Write a program to calculate the sum of two numbers.
-- Implement a simple calculator with basic arithmetic operations.
-- Create a program to find the factorial of a given number.
-
-### 🟠 Intermediate Tasks:
-- Build a TODO list application using Dart.
-- Implement a shopping cart system with Dart collections.
-- Develop a simple CRUD (Create, Read, Update, Delete) application with Dart and file handling.
-
-### 🔵 Advanced Tasks:
-- Create a RESTful API using Dart and the Shelf package.
-- Build a real-time chat application using Dart and WebSockets.
-- Develop a web-based dashboard with Dart and Flutter for data visualization.
-
 ## 📁 Folder Structure:
 
 ```
