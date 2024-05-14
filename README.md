@@ -49,12 +49,6 @@ Welcome to the Dart Programming Language Repository! 🌟 This repository is des
 |   |__ asynchronous_programming.md
 |   |__ web_development_with_dart.md
 |   |__ ...
-|
-|__ 🚀 Practical_Tasks
-|   |__ basic_tasks.md
-|   |__ intermediate_tasks.md
-|   |__ advanced_tasks.md
-|
 |__ 📄 README.md
 ```
 
