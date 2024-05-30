@@ -5,7 +5,7 @@ void main() {
   List<String> output = [];
 
   print("Enter the elements of the list (separated by spaces):");
-  String  inputString = stdin.readLineSync();
+  String  inputString = stdin.readLineSync()!;
   List<String> inputList = inputString.split(" ");
 
   for (int i = 0; i < inputList.length; i++) 

@@ -192,53 +192,65 @@ void main() {
 
             switch (userChoice) {
               case 1:
-                if (studentList[0] == userId) {
-                  print("📋 Your Details:");
-                  print("🔖 ID: ${studentList[0]}");
-                  print("👤 Name: ${studentList[1]}");
-                  print("🎂 Age: ${studentList[2]}");
-                  break;
+                int userIndex = 0;
+
+                while (userIndex < studentList.length) {
+                  List<dynamic> user = studentList[userIndex];
+
+                  if (user[0] == userId) {
+                    print("📋 Your Details:");
+                    print("🔖 ID: ${user[0]}");
+                    print("👤 Name: ${user[1]}");
+                    print("🎂 Age: ${user[2]}");
+                    break;
+                  }
+                  userIndex++;
+                }
+
+                if (userIndex == studentList.length) {
+                  print("❌ User with ID $userId not found.");
                 }
                 break;
 
               case 2:
-                if (studentList[0] == userId) {
-                  print("📋 Current Details:");
-                  print("🔖 ID: ${studentList[0]}");
-                  print("👤 Name: ${studentList[1]}");
-                  print("🎂 Age: ${studentList[2]}");
+                int userIndex = 0;
 
-                  int updateIndex = 0;
+                while (userIndex < studentList.length) {
+                  List<dynamic> user = studentList[userIndex];
 
-                  while (updateIndex < studentList.length) {
-                    List student = studentList[updateIndex];
+                  if (user[0] == userId) {
+                    print("📋 Current Details:");
+                    print("🔖 ID: ${user[0]}");
+                    print("👤 Name: ${user[1]}");
+                    print("🎂 Age: ${user[2]}");
 
-                    if (student[0] == updateIndex) {
-                      stdout.write("✏️ Enter the updated name: ");
-                      String? updatedName = stdin.readLineSync();
-                      if (updatedName != null) {
-                        student[1] = updatedName;
-                        print("Name updated successfully.");
-                      } else {
-                        print("Invalid input. Please try again.");
-                      }
+                    stdout.write("✏️ Enter the updated name: ");
+                    String? updatedName = stdin.readLineSync();
+                    if (updatedName != null) {
+                      user[1] = updatedName;
+                      print("Name updated successfully.");
+                    } else {
+                      print("Invalid input. Please try again.");
+                    }
 
-                      stdout.write("✏️ Enter the updated age: ");
-                      int? updatedAge = int.tryParse(stdin.readLineSync()!);
+                    stdout.write("✏️ Enter the updated age: ");
+                    String? updatedAgeString = stdin.readLineSync();
+                    if (updatedAgeString != null) {
+                      int? updatedAge = int.tryParse(updatedAgeString);
                       if (updatedAge != null) {
-                        student[2] = updatedAge;
+                        user[2] = updatedAge;
                         print("Age updated successfully.");
                       } else {
                         print("Invalid input. Please try again.");
                       }
-                      break;
                     }
-                    updateIndex++;
+                    break;
                   }
+                  userIndex++;
+                }
 
-                  if (updateIndex == studentList.length) {
-                    print("❌ Student with ID $updateIndex not found.");
-                  }
+                if (userIndex == studentList.length) {
+                  print("❌ User with ID $userId not found.");
                 }
                 break;
 
