@@ -9,7 +9,7 @@ void main()
     print("Enter element ${i+1}:- ");
     list.add(int.parse(stdin.readLineSync()!));
   }
-  print("Sum of all elements is:- ${sumOfListElements(list: list)}");
+ print("Sum of all elements is:- ${sumOfListElements}");
 }
 int sumOfListElements({required List<int> list})
 {
