@@ -1,7 +1,6 @@
 
 import 'dart:io';
 
-
 class Customer {
   String? cust_id;
   String? cust_name;
@@ -17,8 +16,9 @@ class Product {
   String? pro_id;
   String? pro_name;
   double? pro_price;
+  int? pro_quantity;
 
-  Product(this.pro_id, this.pro_name, this.pro_price);
+  Product(this.pro_id, this.pro_name, this.pro_price, this.pro_quantity);
 }
 
 void main() {
@@ -30,7 +30,8 @@ void main() {
     print("1. Add Customer");
     print("2. View Customers");
     print("3. Calculate Bill");
-    print("4. Exit");
+    print("4. Search Customer by ID"); // Added option
+    print("5. Exit");
     stdout.write("Enter your choice: ");
     choice = int.parse(stdin.readLineSync()!);
 
@@ -45,12 +46,15 @@ void main() {
         calculateBill(customers);
         break;
       case 4:
+        searchCustomerById(customers); 
+        break;
+      case 5:
         print("Exiting... Thank you!");
         break;
       default:
         print("Invalid choice. Please try again.");
     }
-  } while (choice != 4);
+  } while (choice != 5);
 }
 
 void addCustomer(List<Customer> customers) {
@@ -74,11 +78,12 @@ void addCustomer(List<Customer> customers) {
     String pro_name = stdin.readLineSync()!;
     stdout.write("Enter product price: ");
     double pro_price = double.parse(stdin.readLineSync()!);
-    products.add(Product(pro_id, pro_name, pro_price));
+    stdout.write("Enter product quantity: ");
+    int pro_quantity = int.parse(stdin.readLineSync()!);
+    products.add(Product(pro_id, pro_name, pro_price, pro_quantity));
   }
 
-  customers
-      .add(Customer(cust_id, cust_name, cust_contact, cust_address, products));
+  customers.add(Customer(cust_id, cust_name, cust_contact, cust_address, products));
   print("\nCustomer added successfully!");
 }
 
@@ -99,12 +104,18 @@ void viewCustomers(List<Customer> customers) {
   }
 }
 
-void calculateBill(List<Customer> customers) {
+void searchCustomerById(List<Customer> customers) {
+  stdout.write("\nEnter customer ID to search: ");
+  String cust_id = stdin.readLineSync()!;
+  calculateBill(customers, cust_id);
+}
+
+void calculateBill(List<Customer> customers, [String? cust_id]) {
   print("\n--- Bill Calculation ---");
   for (int i = 0; i < customers.length; i++) {
     double total_amount = 0;
     for (int j = 0; j < customers[i].products.length; j++) {
-      total_amount += customers[i].products[j].pro_price!;
+      total_amount = total_amount + customers[i].products[j].pro_price!;
     }
     double discount = 0;
     if (total_amount >= 500 && total_amount <= 1500) {
@@ -124,3 +135,4 @@ void calculateBill(List<Customer> customers) {
     print("-------------------------------");
   }
 }
+
